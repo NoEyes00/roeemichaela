@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicons: explicit PNG type plus fallbacks for broader browser support -->
+    <link rel="icon" href="Pics/MyLogo.png" type="image/png" sizes="32x32">
+    <link rel="shortcut icon" href="Pics/MyLogo.png" type="image/png">
+    <link rel="apple-touch-icon" href="Pics/MyLogo.png">
+    <!-- Bootstrap CSS (CDN) - load before custom styles so we can override it -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display (classy serif) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="MyPortfolio.css">
+    <title>Roee Bamenta</title>
+    
+</head>
+<body>  
+    <nav class="navbar navbar-expand-lg navbar-light bg-black shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#home">
+                <img src="Pics/MyLogo.png" alt="MyLogo" class="my-logo-img">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                    <div></div> 
+                </span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <!-- Resume -->
+                    <li class="nav-item d-lg-none"><a class="nav-link" href="#experience"><i class="fa-regular fa-folder-open"></i> Resume</a></li>
+                </ul>
+            </div>
+            <div class="d-flex align-items-center">
+                <a href="#experience" class="btn resume ms-2 d-none d-lg-inline-block"><i class="fa-regular fa-folder-open"></i> Resume</a>
+            </div>
+        </div>
+    </nav>
+
+<!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>ROEE MICHAELA</h1>
+            <p class="tagline">Building interfaces that connect users and experiences.</p>
+            <div>
+                <a href="#projects" class="cta-button">View My Work</a>
+                <!-- Open contact modal instead of navigating to a removed contact section -->
+                <button type="button" class="cta-button secondary" data-bs-toggle="modal" data-bs-target="#contactModal">
+                    Get In Touch
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container-lg">
+            <h2>About Me</h2>
+            <div class="section-divider"></div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm a passionate <strong>Web Developer</strong> with a keen eye for design and a love for creating beautiful, functional digital experiences.</p>
+                    <p>With over <strong>3 years of learning</strong>, I specialize in building UI/UX web applications that not only look stunning but also perform exceptionally well.</p>
+                    <p>My journey in tech has taken me through various technologies and frameworks, allowing me to develop a unique perspective on solving complex problems with elegant solutions.</p>
+                </div>
+                <div class="about-image">
+                    <img src="Pics/roee.JPG" alt="Roee Michaela Bamenta" class="img-fluid rounded-circle">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+        <section id="experience">
+            <div class="container-lg">
+                <h2>Experience</h2>
+                <div class="section-divider"></div>
+                <div class="projects-grid">
+                    <div class="project-card scroll-animation">
+                        <h3>Technical Support — GMTC</h3><br>
+                        <p>•	Operates the deck simulator to ensure training and system functionality<br>
+                        •	Provide technical assistance and support employees for hardware and software issues<br>
+                        •	Maintains and support connections to ensure reliable system performance.</p>
+                    </div>
+                    <div class="project-card scroll-animation">
+                        <h3>Multimedia Editor — GMTC</h3><br>
+                        <p>•	Edits and produces photo and video content for company projects<br>
+                        •	Capture high-quality photos and videos for marketing in documentation purposes<br>
+                        •	Manages to maintain the company’s social media presence and content.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Projects Section -->
+        <section id="projects">
+        <div class="container-lg">
+            <h2>Featured Projects</h2>
+            <div class="section-divider"></div>
+            <div class="projects-grid">
+                <div class="project-card scroll-animation" data-images="Pics/SD.png,Pics/SD2.png,Pics/SD3.png,Pics/SD4.png">
+                    <div class="project-img"><img src="Pics/SD1.png" alt="Sevendays" title="Project Sevendays"></div>
+                    <h3>Sevendays Coffee - Angat</h3>
+                    <p>A comprehensive Point-of-Sale (POS) system designed for coffee shops, featuring real-time inventory and product management, seamless order tracking, and secure payment processing for both in-store and online transactions. The system enables baristas and staff to efficiently handle orders, monitor stock levels, and generate insightful sales reports, while customers enjoy a smooth checkout experience through multiple payment options—whether at the counter or via the web platform..</p>
+                </div>
+                <div class="project-card scroll-animation" data-images="Pics/IL.png,Pics/IL2.png,Pics/IL3.png,Pics/IL4.png">
+                    <div class="project-img"><img src="Pics/IL1.png" alt="IncluLearn" title="Project IncluLearn"></div>
+                    <h3>IncluLearn</h3>
+                    <p>IncluLearn is an inclusive learning management system (LMS) designed to support young learners aged 6–8 (Grade 1-3) who manifest Dyslexia and Dyscalculia. It features adaptive course management, progress monitoring, and accessible assessment tools suited for both in-person and online learning environments. The platform empowers educators to deliver personalized instruction and track individual development, while students benefit from an engaging, supportive, and easy-to-navigate learning experience that accommodates their unique learning needs—whether in the classroom or through the web platform.</p>
+                </div>
+                <div class="project-card scroll-animation" data-images="Pics/SNS.png,Pics/SNS2.png,Pics/SNS3.png,Pics/SNS4.png">
+                    <div class="project-img"><img src="Pics/SNS1.png" alt="Snap&Shoot" title="Project Snap&Shoot"></div>
+                    <h3>Snap&Shoot</h3>
+                    <p>A comprehensive e-commerce platform designed for businesses, featuring real-time product and inventory management, customer engagement tools, and secure payment processing for both in-store and online transactions. The system allows merchants to efficiently manage products, track sales performance, and analyze consumer behavior, while customers enjoy a smooth and convenient shopping experience through multiple access points—whether visiting the physical store or browsing via the web platform.</p>
+                </div>
+                <div class="project-card scroll-animation" data-images="Pics/SNS.png,Pics/SNS2.png,Pics/SNS3.png,Pics/SNS4.png">
+                    <div class="project-img"><img src="Pics/SNS.png" alt="Snap&Shoot" title="Project Snap&Shoot"></div>
+                    <h3>Trustees</h3>
+                    <p>A comprehensive e-commerce platform designed for businesses, featuring real-time product and inventory management, customer engagement tools, and secure payment processing for both in-store and online transactions. The system allows merchants to efficiently manage products, track sales performance, and analyze consumer behavior, while customers enjoy a smooth and convenient shopping experience through multiple access points—whether visiting the physical store or browsing via the web platform.</p>
+                </div>
+                <div class="project-card scroll-animation" data-images="Pics/SD.png,Pics/SD2.png,Pics/SD3.png,Pics/SD4.png">
+                    <div class="project-img"><img src="Pics/SD1.png" alt="Sevendays" title="Project Sevendays"></div>
+                    <h3>Sevendays Coffee - Angat</h3>
+                    <p>A comprehensive Point-of-Sale (POS) system designed for coffee shops, featuring real-time inventory and product management, seamless order tracking, and secure payment processing for both in-store and online transactions. The system enables baristas and staff to efficiently handle orders, monitor stock levels, and generate insightful sales reports, while customers enjoy a smooth checkout experience through multiple payment options—whether at the counter or via the web platform..</p>
+                </div>
+                <div class="project-card scroll-animation" data-images="Pics/IL.png,Pics/IL2.png,Pics/IL3.png,Pics/IL4.png">
+                    <div class="project-img"><img src="Pics/IL1.png" alt="IncluLearn" title="Project IncluLearn"></div>
+                    <h3>IncluLearn</h3>
+                    <p>IncluLearn is an inclusive learning management system (LMS) designed to support young learners aged 6–8 (Grade 1-3) who manifest Dyslexia and Dyscalculia. It features adaptive course management, progress monitoring, and accessible assessment tools suited for both in-person and online learning environments. The platform empowers educators to deliver personalized instruction and track individual development, while students benefit from an engaging, supportive, and easy-to-navigate learning experience that accommodates their unique learning needs—whether in the classroom or through the web platform.</p>
+                </div>
+                <div class="project-card scroll-animation" data-images="Pics/SNS.png,Pics/SNS2.png,Pics/SNS3.png,Pics/SNS4.png">
+                    <div class="project-img"><img src="Pics/SNS1.png" alt="Snap&Shoot" title="Project Snap&Shoot"></div>
+                    <h3>Snap&Shoot</h3>
+                    <p>A comprehensive e-commerce platform designed for businesses, featuring real-time product and inventory management, customer engagement tools, and secure payment processing for both in-store and online transactions. The system allows merchants to efficiently manage products, track sales performance, and analyze consumer behavior, while customers enjoy a smooth and convenient shopping experience through multiple access points—whether visiting the physical store or browsing via the web platform.</p>
+                </div>
+                <div class="project-card scroll-animation" data-images="Pics/SNS.png,Pics/SNS2.png,Pics/SNS3.png,Pics/SNS4.png">
+                    <div class="project-img"><img src="Pics/SNS.png" alt="Snap&Shoot" title="Project Snap&Shoot"></div>
+                    <h3>Trustees</h3>
+                    <p>A comprehensive e-commerce platform designed for businesses, featuring real-time product and inventory management, customer engagement tools, and secure payment processing for both in-store and online transactions. The system allows merchants to efficiently manage products, track sales performance, and analyze consumer behavior, while customers enjoy a smooth and convenient shopping experience through multiple access points—whether visiting the physical store or browsing via the web platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container-lg">
+            <h2>Skills & Expertise</h2>
+            <div class="section-divider"></div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <ul class="skill-list">
+                        <li>React & Next.js</li>
+                        <li>Vue.js & Nuxt</li>
+                        <li>TypeScript</li>
+                        <li>Tailwind CSS</li>
+                        <li>Web Performance</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <ul class="skill-list">
+                        <li>Node.js & Express</li>
+                        <li>Python & Django</li>
+                        <li>PostgreSQL</li>
+                        <li>MongoDB</li>
+                        <li>REST APIs</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Platforms</h3>
+                    <ul class="skill-list">
+                        <li>Git & GitHub</li>
+                        <li>Docker</li>
+                        <li>AWS & Vercel</li>
+                        <li>CI/CD Pipelines</li>
+                        <li>Figma</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact section removed (replaced by Experience) -->
+
+        <!-- Contact Modal (shows previous "Let's Connect" content) -->
+        <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-dark text-light">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title" id="contactModalLabel">Let's Connect</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>I'm always interested in hearing about new projects and opportunities. Feel free to reach out!</p>
+                        <p>
+                            <a href="mailto:hello@lunaportfolio.com" class="cta-button" style="display:inline-block;">Send an Email</a>
+                        </p>
+                        <div class="social-links mt-3">
+                                <a href="#" class="social-link">👨‍💼</a>
+                                <a href="#" class="social-link">🐙</a>
+                                <a href="#" class="social-link">💼</a>
+                                <a href="#" class="social-link">🐦</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Modal (populated dynamically) -->
+        <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content bg-dark text-light">
+                    <div class="modal-body">
+                        <div id="projectCarousel" class="carousel slide">
+                            <div class="carousel-inner">
+                                <!-- slides injected here -->
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <!-- thumbnail indicators will be injected here -->
+                        <div class="carousel-thumbs mt-3 d-flex gap-2 justify-content-center" aria-hidden="false"></div>
+
+                        <!-- Tech row: compact inline chips with tech icons -->
+                        <div class="tech-row d-flex gap-2 justify-content-center" aria-hidden="false" aria-label="Technologies used">
+                            <span class="tech-chip" title="HTML5"> <i class="fa-brands fa-html5"></i> HTML</span>
+                            <span class="tech-chip" title="JavaScript"><i class="fa-brands fa-js"></i> JS</span>
+                            <span class="tech-chip" title="CSS3"><i class="fa-brands fa-css3-alt"></i> CSS</span>
+                            <span class="tech-chip" title="Bootstrap"><i class="fa-brands fa-bootstrap"></i> Bootstrap</span>
+                        </div>
+
+                        <!-- Tech row: will be populated dynamically from the clicked project's data-tech attribute -->
+                        <!-- <div class="tech-row d-flex gap-2 justify-content-center" aria-hidden="true" aria-label="Technologies used"></div> -->
+
+
+                        <div class="modal-header border-0">
+                        <h5 class="modal-title" id="projectModalLabel">Project</h5></div>
+                        <p id="projectModalDesc" class="mb-3"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+    <footer>
+        <div class="container-lg">
+            <p><i>Moonlight in motion — design that glows.</i></p>
+            <p>Copyright &copy;  2025 Roee Michaela Bamenta Portfolio.</p>
+            <p> All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Toggle .active on clicked nav items so they keep the gradient background -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const nav = document.querySelector('nav');
+            if (!nav) return;
+
+            nav.addEventListener('click', function (e) {
+                const link = e.target.closest('a');
+                if (!link || !nav.contains(link)) return;
+                // prevent default for anchors that point to '#'
+                if (link.getAttribute('href') === '#') e.preventDefault();
+
+                // remove active from all nav anchors, then add to clicked one
+                nav.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+    </script>
+
+        <!-- Close collapse when clicking/tapping outside the open menu -->
+        <script>
+            (function () {
+                document.addEventListener('click', function (e) {
+                    const collapseEl = document.getElementById('mainNavbar');
+                    if (!collapseEl) return;
+
+                    // if collapse is open and click target is outside the navbar and not the toggler
+                    const isOpen = collapseEl.classList.contains('show');
+                    if (!isOpen) return;
+
+                    const toggler = document.querySelector('.navbar-toggler');
+                    const clickedInsideNavbar = collapseEl.contains(e.target) || (toggler && toggler.contains(e.target));
+                    if (clickedInsideNavbar) return;
+
+                    // hide the collapse using Bootstrap's API
+                    try {
+                        const collapseInstance = bootstrap.Collapse.getOrCreateInstance(collapseEl);
+                        collapseInstance.hide();
+                    } catch (err) {
+                        // fallback: toggle the class
+                        collapseEl.classList.remove('show');
+                    }
+                }, { passive: true });
+
+                // Also handle touchstart for better mobile responsiveness
+                document.addEventListener('touchstart', function (e) {
+                    const collapseEl = document.getElementById('mainNavbar');
+                    if (!collapseEl) return;
+                    const isOpen = collapseEl.classList.contains('show');
+                    if (!isOpen) return;
+                    const toggler = document.querySelector('.navbar-toggler');
+                    const clickedInsideNavbar = collapseEl.contains(e.target) || (toggler && toggler.contains(e.target));
+                    if (clickedInsideNavbar) return;
+                    try { bootstrap.Collapse.getOrCreateInstance(collapseEl).hide(); } catch (err) { collapseEl.classList.remove('show'); }
+                }, { passive: true });
+            })();
+
+            // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                // ignore bare '#' anchors (used as placeholders)
+                if (!href || href === '#') return;
+                e.preventDefault();
+                try {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                } catch (err) {
+                    // invalid selector - ignore
+                }
+            });
+        });
+
+        // Active nav link via IntersectionObserver (more reliable than scroll math)
+        (function() {
+            const sections = document.querySelectorAll('section[id]');
+            const allLinks = document.querySelectorAll('.nav-link, .btn.resume, .navbar-brand');
+
+            function setActiveFor(id) {
+                // remove existing active state
+                allLinks.forEach(a => a.classList.remove('active'));
+                // prefer the actual nav-link element (not the brand)
+                let sel = document.querySelector(`.nav-link[href="#${id}"]`);
+                if (!sel) sel = document.querySelector(`a[href="#${id}"]`);
+                if (sel) {
+                    sel.classList.add('active');
+                    console.log('Activated nav for', id, sel);
+                }
+            }
+
+            // fallback: mark home active on load
+            setActiveFor('home');
+
+            // Use multiple thresholds and pick the most visible section each callback
+            const observer = new IntersectionObserver((entries) => {
+                // find the entry with the largest intersectionRatio that's intersecting
+                let best = null;
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    if (!best || entry.intersectionRatio > best.intersectionRatio) best = entry;
+                });
+                if (best) {
+                    // debug log to help verify behavior in DevTools
+                    console.log('Section in view:', best.target.id, 'ratio', best.intersectionRatio.toFixed(2));
+                    setActiveFor(best.target.id);
+                }
+            }, { root: null, threshold: [0.25, 0.5, 0.75] });
+
+            sections.forEach(s => observer.observe(s));
+        })();
+
+        // Scroll animation for project cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animation').forEach(el => {
+            observer.observe(el);
+        });
+        </script>
+
+    <!-- Small script: toggle stronger backdrop when collapse opens on mobile -->
+    <!-- removed menu-open script to revert to previous behavior -->
+
+    <!-- Project modal population and click handlers -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const projectModalEl = document.getElementById('projectModal');
+            if (!projectModalEl) return;
+
+            const modal = new bootstrap.Modal(projectModalEl);
+            const carouselInner = projectModalEl.querySelector('.carousel-inner');
+            const modalTitle = projectModalEl.querySelector('#projectModalLabel');
+            const modalDesc = projectModalEl.querySelector('#projectModalDesc');
+
+            function populateCarousel(images, title) {
+                carouselInner.innerHTML = '';
+                const thumbsContainer = projectModalEl.querySelector('.carousel-thumbs');
+                if (thumbsContainer) thumbsContainer.innerHTML = '';
+
+                images.forEach((src, i) => {
+                    const item = document.createElement('div');
+                    item.className = 'carousel-item' + (i === 0 ? ' active' : '');
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = title + ' image ' + (i + 1);
+                    img.className = 'd-block w-100';
+                    item.appendChild(img);
+                    carouselInner.appendChild(item);
+
+                    // create thumbnail
+                    if (thumbsContainer) {
+                        const thumb = document.createElement('img');
+                        thumb.src = src;
+                        thumb.alt = title + ' thumbnail ' + (i + 1);
+                        thumb.className = 'carousel-thumb-img' + (i === 0 ? ' active' : '');
+                        thumb.setAttribute('data-slide-to', i);
+                        thumb.style.cursor = 'pointer';
+                        thumb.addEventListener('click', function () {
+                            const carouselEl = projectModalEl.querySelector('#projectCarousel');
+                            try { bootstrap.Carousel.getOrCreateInstance(carouselEl).to(i); } catch (err) { /* ignore */ }
+                            updateActiveThumb(i);
+                        });
+                        thumbsContainer.appendChild(thumb);
+                    }
+                });
+
+                // reset carousel to first slide
+                const carouselEl = projectModalEl.querySelector('#projectCarousel');
+                try { bootstrap.Carousel.getOrCreateInstance(carouselEl).to(0); } catch (err) { /* ignore */ }
+
+                // when carousel finishes sliding, sync the active thumbnail
+                if (carouselEl) {
+                    carouselEl.removeEventListener('slid.bs.carousel', carouselEl._thumbListener || function () {});
+                    const listener = function () {
+                        const items = Array.from(carouselInner.children);
+                        const activeIndex = items.findIndex(it => it.classList.contains('active'));
+                        updateActiveThumb(activeIndex);
+                    };
+                    carouselEl.addEventListener('slid.bs.carousel', listener);
+                    carouselEl._thumbListener = listener;
+                }
+
+                function updateActiveThumb(index) {
+                    if (!thumbsContainer) return;
+                    const thumbs = Array.from(thumbsContainer.children);
+                    thumbs.forEach((t, idx) => {
+                        if (idx === index) t.classList.add('active'); else t.classList.remove('active');
+                    });
+                }
+            }
+
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', function (e) {
+                    // allow clicks on nested links/buttons to behave normally
+                    if (e.target.closest('a, button')) return;
+
+                    const titleEl = card.querySelector('h3');
+                    const descEl = card.querySelector('p');
+                    const title = titleEl ? titleEl.textContent.trim() : '';
+                    const desc = descEl ? descEl.innerHTML.trim() : '';
+
+                    modalTitle.textContent = title;
+                    modalDesc.innerHTML = desc;
+
+                    // gather images: prefer data-images CSV on the card, otherwise use image inside .project-img
+                    let images = [];
+                    if (card.dataset && card.dataset.images) {
+                        images = card.dataset.images.split(',').map(s => s.trim()).filter(Boolean);
+                    }
+                    if (images.length === 0) {
+                        const imgEl = card.querySelector('.project-img img');
+                        if (imgEl && imgEl.src) images.push(imgEl.src);
+                    }
+                    if (images.length === 0) images.push('Pics/SD1.png');
+
+                    populateCarousel(images, title);
+                    modal.show();
+                });
+            });
+
+            // Inline descriptions are hidden by default; the modal will show the description when a card is opened.
+        });
+    </script>
+
+</body>
+</html>
