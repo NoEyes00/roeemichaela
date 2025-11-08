@@ -87,7 +87,7 @@ nav, section, footer {
     display: flex;
     align-items: center;
     height: auto;
-    max-width: 50rem;
+    max-width: 80rem;
     width: 100%;
     position: absolute;
     top: 20px;
@@ -822,4 +822,39 @@ body::-webkit-scrollbar,
     .tech-row { gap: 6px; margin: 8px auto 12px; }
     .tech-chip { padding: 5px 8px; height: 32px; font-size: 0.9rem; }
     .tech-chip i { font-size: 16px; }
+}
+
+
+/* Hero full bleed + navbar overlay on small to medium screens
+     Inserted per user request: places navbar above hero and keeps hero as background */
+@media (max-width: 991.98px) {
+    .hero {
+        position: relative;
+        top: 0;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        min-height: 100vh;
+    }
+
+    .hero::before,
+    .hero::after {
+        /* keep subtle animated orbs but ensure they're behind navbar */
+        z-index: 0;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1; /* ensures text appears above background */
+        padding-top: 80px; /* prevent text from hiding behind navbar */
+    }
+
+    .navbar {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: transparent !important;
+        box-shadow: none !important;
+        z-index: 9999;
+    }
 }
