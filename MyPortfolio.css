@@ -89,7 +89,8 @@ nav, section, footer {
     height: auto;
     max-width: 80rem;
     width: 100%;
-    position: absolute;
+    /* keep navbar fixed in place so it doesn't scroll away */
+    position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
@@ -100,6 +101,44 @@ nav, section, footer {
     background: linear-gradient(135deg, var(--five) 0%, var(--four) 100%);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 9999;
+    transition: opacity 320ms ease, transform 240ms ease;
+}
+
+/* Dimmed state: low opacity but still interactive */
+.navbar.nav-dimmed {
+    opacity: 0.18;
+}
+
+/* On desktop/larger viewports, make the dimmed navbar fully transparent
+   so it becomes invisible when not used. Keep the lighter dim on smaller
+   screens for discoverability. */
+@media (min-width: 992px) {
+    .navbar.nav-dimmed {
+        opacity: 0;
+    }
+}
+
+/* When user hovers or focuses inside the navbar, keep it fully opaque */
+.navbar:hover,
+.navbar:focus-within {
+    opacity: 1 !important;
+}
+
+/* Full-screen backdrop used when the mobile navbar collapse is open.
+   This dims the page content to ~50% opacity while keeping the navbar
+   interactive above the backdrop. */
+.nav-backdrop {
+    position: fixed;
+    inset: 0; /* top/right/bottom/left: 0 */
+    background: rgba(0,0,0,0.5); /* 50% black dim */
+    opacity: 0;
+    transition: opacity 200ms ease;
+    pointer-events: none; /* disabled when hidden */
+    z-index: 9998; /* below navbar (9999+) but above page content */
+}
+.nav-backdrop.visible {
+    opacity: 1;
+    pointer-events: auto; /* allow click-to-close when visible */
 }
 
 .navbar-nav {
@@ -166,15 +205,17 @@ nav, section, footer {
 }
 
 #mainNavbar .navbar-nav {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: auto;
-  max-width: 30rem;
-  gap: 20px;
-  border: 1px solid var(--two);
-  border-radius: 30px;
-  margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: auto;
+    /* remove tight max-width so all nav items (including Skills) stay inside the bordered group */
+    max-width: none;
+    gap: 20px;
+    border: 1px solid var(--two);
+    border-radius: 30px;
+    margin: 0 auto;
+    padding: 6px 12px; /* give a little inner padding so links don't touch the border */
 }
 
 
@@ -212,6 +253,32 @@ nav, section, footer {
   background-color: var(--three); 
   margin: 5px 0;
   border-radius: 1px;
+}
+
+/* When the mobile menu is open, make non-selected link text white and
+   change the burger icon bars to white for better contrast. We use the
+   collapse `.show` state and the toggler's aria-expanded attribute. */
+.navbar .collapse.show .nav-link,
+.navbar .collapse.show .navbar-brand,
+.navbar .collapse.show .btn.resume,
+.navbar .collapse.show .nav-link:link,
+.navbar .collapse.show .nav-link:visited {
+    color: var(--one) !important;
+}
+
+/* Toggler bars turn white when expanded (aria-expanded="true") */
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before,
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after,
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon div {
+    background-color: var(--one) !important;
+}
+
+/* Smooth color transition for links and toggler bars */
+.navbar .nav-link,
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after,
+.navbar-toggler-icon div {
+    transition: color 160ms ease, background-color 160ms ease;
 }
 
 
@@ -648,14 +715,15 @@ footer p {
 @media (max-width: 991.98px) {
 /* Nav: sticky & transparent on small/medium viewports (reverted) */
     .navbar {
-        position: sticky;
-        top: 0;
-        left: 0;
-        transform: none;
+        /* keep fixed positioning on small/medium so it stays visible at the same place */
+        position: fixed;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
         margin: 0 auto !important;
-        border-radius: 0;
+        border-radius: 8px;
         padding: 6px var(--navbar-side-padding-md);
-        width: 100%;
+        width: calc(100% - 2 * var(--navbar-side-padding-md));
         max-width: 100%;
         background: transparent !important;
         box-shadow: none !important;
@@ -697,13 +765,13 @@ footer p {
 @media (max-width: 767.98px) {
     .navbar {
         /* Keep navbar sticky & transparent on extra-small screens and remove top gap */
-        position: sticky;
-        top: 0;
-        left: 0;
-        transform: none;
+        position: fixed;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
         margin: 0 auto !important;
         padding: 6px var(--navbar-side-padding-sm);
-        width: 100%;
+        width: calc(100% - 2 * var(--navbar-side-padding-sm));
         max-width: 100%;
         background: transparent !important;
         box-shadow: none !important;
@@ -875,6 +943,70 @@ body::-webkit-scrollbar,
     .tech-chip i { font-size: 16px; }
 }
 
+/* Responsive tweaks: allow tech chips to wrap and reduce size on small screens */
+.tech-row {
+    flex-wrap: wrap; /* allow chips to wrap to multiple lines on narrow viewports */
+}
+
+@media (max-width: 767.98px) {
+    .tech-row {
+        gap: 6px;
+        padding: 6px 4px;
+        justify-content: center;
+    }
+
+    .tech-chip {
+        font-size: 0.88rem;
+        padding: 6px 10px;
+        height: 34px;
+        min-width: auto;
+    }
+
+    .tech-chip i {
+        font-size: 15px;
+        margin-right: 6px;
+    }
+}
+
+/* Override: left-align navbar on extra-small screens so logo sits further left */
+@media (max-width: 767.98px) {
+    .navbar {
+        left: 0 !important;
+        transform: none !important;
+        width: calc(100% - 10px) !important; /* small right breathing room */
+        margin-left: 10px !important;         /* ~10px from left edge */
+    }
+    .navbar-brand {
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+}
+
+@media (max-width: 420px) {
+    /* very small screens: allow horizontal scrolling for long tech lists */
+    #projectTechRow.tech-row {
+        white-space: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 8px;
+        padding: 6px 8px;
+    }
+
+    #projectTechRow.tech-row .tech-chip {
+        display: inline-flex;
+        flex: 0 0 auto;
+        font-size: 0.85rem;
+        padding: 5px 8px;
+        height: 32px;
+    }
+
+    .tech-logo-img {
+        width: 16px !important;
+        height: 16px !important;
+        margin-right: 6px;
+    }
+}
+
 
 /* Hero full bleed + navbar overlay on small to medium screens
      Inserted per user request: places navbar above hero and keeps hero as background */
@@ -899,14 +1031,24 @@ body::-webkit-scrollbar,
         padding-top: 80px; /* prevent text from hiding behind navbar */
     }
 
+    /* Keep navbar fixed and centered on small/medium screens so Bootstrap's
+       collapse/toggler behavior works reliably. Avoid absolute positioning
+       which can interfere with the collapse container and toggler hit area. */
     .navbar {
-        position: absolute !important;
-        top: 0;
-        left: 0;
-        width: 100%;
+        position: fixed !important;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 2 * var(--navbar-side-padding-md));
+        max-width: 100%;
         background: transparent !important;
         box-shadow: none !important;
         z-index: 9999;
+    }
+
+    /* Ensure the toggler sits above other navbar elements and is always clickable */
+    .navbar-toggler {
+        z-index: 10001;
     }
 }
 
