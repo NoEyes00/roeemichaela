@@ -379,10 +379,16 @@ section h2 {
 }
 
 .about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* use flex so we can easily control ordering across breakpoints */
+    display: flex;
+    flex-direction: row;
     gap: 60px;
     align-items: center;
+}
+
+/* ensure image appears before text on wide screens */
+.about-image {
+    order: -1;
 }
 
 .about-text p {
@@ -397,7 +403,7 @@ section h2 {
 }
 
 .about-image {
-    width: 100%;
+    width: 50%;
     height: auto;
     background: linear-gradient(135deg, rgba(232, 232, 232, 0.1), rgba(122, 122, 122, 0.1));
     border-radius: 50%;
@@ -727,11 +733,30 @@ footer p {
     }
 
     .about-content {
-        grid-template-columns: 1fr;
+        /* switch to a single-column flow on very small screens and
+           use flex so we can reorder the image before the text */
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
     .about-image {
         height: auto;
+        /* place the image first on mobile */
+        order: -1;
+        /* limit the visual size on small screens and center it */
+        max-width: 220px;
+        margin: 0 auto;
+        padding: 6px;
+    }
+
+    /* slightly reduce the actual img size and preserve aspect on mobile */
+    .about-image img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 50%;
+        box-shadow: 0 8px 20px rgba(232, 232, 232, 0.08);
     }
 
     /* Keep buttons their intrinsic width and center them using parent's text-align */
@@ -763,6 +788,32 @@ body::-webkit-scrollbar,
     object-fit: contain;
     background: #000;
     border-radius: 10px;
+}
+
+/* Style the project modal to match project-card appearance */
+#projectModal .modal-content {
+    background: linear-gradient(135deg, rgba(58, 58, 58, 0.4), rgba(122, 122, 122, 0.2));
+    border: 2px solid rgba(232, 232, 232, 0.1);
+    border-radius: 15px;
+    color: var(--one);
+}
+
+#projectModal .modal-body,
+#projectModal .modal-header,
+#projectModal .modal-footer {
+    background: transparent;
+    color: inherit;
+}
+
+/* Make modal title and text use project palette */
+#projectModal .modal-title,
+#projectModal #projectModalDesc {
+    color: var(--one);
+}
+
+/* Thumbnails strip background should be transparent so modal gradient shows through */
+#projectModal .carousel-thumbs {
+    background: transparent;
 }
 
 /* thumbnail strip below project modal carousel */
@@ -856,5 +907,17 @@ body::-webkit-scrollbar,
         background: transparent !important;
         box-shadow: none !important;
         z-index: 9999;
+    }
+}
+
+/* Slightly larger portrait when device is in landscape on small screens */
+@media (max-width: 767.98px) and (orientation: landscape) {
+    .about-image {
+        max-width: 260px; /* a bit bigger than portrait in portrait mode */
+        padding: 8px;
+    }
+
+    .about-image img {
+        box-shadow: 0 12px 28px rgba(232, 232, 232, 0.10);
     }
 }
