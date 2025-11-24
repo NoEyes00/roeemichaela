@@ -968,6 +968,30 @@ body::-webkit-scrollbar,
     }
 }
 
+/* Project modal mobile close button styling and extra top-space */
+.project-modal-close {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    z-index: 1060; /* above modal content */
+    display: none; /* shown only on small screens */
+}
+
+/* Provide extra space at the top of the modal so the close button is not covered
+   by the fixed navbar or device UI on small screens. */
+@media (max-width: 767.98px) {
+    .project-modal-close {
+        display: block;
+    }
+    /* Move modal down slightly and allow a little extra top padding inside modal content */
+    #projectModal .modal-dialog {
+        margin: 1.25rem 0; /* push dialog lower on the screen */
+    }
+    #projectModal .modal-content {
+        padding-top: 36px; /* space to accommodate close button */
+    }
+}
+
 /* Override: left-align navbar on extra-small screens so logo sits further left */
 @media (max-width: 767.98px) {
     .navbar {
@@ -1049,6 +1073,23 @@ body::-webkit-scrollbar,
     /* Ensure the toggler sits above other navbar elements and is always clickable */
     .navbar-toggler {
         z-index: 10001;
+    }
+}
+
+/* When a Bootstrap modal is open on small / mobile viewports, ensure the
+   navbar (logo + burger) sits behind the modal and its backdrop so the
+   modal visually overlays the header controls. This only applies on
+   narrower screens where the header would otherwise obstruct the modal. */
+@media (max-width: 991.98px) {
+    body.modal-open .navbar {
+        z-index: 1030 !important; /* below Bootstrap modal (1050) and backdrop (1040) */
+    }
+    body.modal-open .navbar-toggler {
+        z-index: 1030 !important; /* ensure toggler is also behind the modal */
+    }
+    /* also push the custom nav-backdrop behind the modal */
+    body.modal-open .nav-backdrop {
+        z-index: 1025 !important;
     }
 }
 
