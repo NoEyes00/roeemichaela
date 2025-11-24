@@ -86,6 +86,9 @@ nav, section, footer {
 .navbar {
     display: flex;
     align-items: center;
+/* Strong, portrait-only tablet centering: force the modal to sit centered
+   in both axes on tablet devices held in portrait orientation. These
+   overrides use !important to beat Bootstrap defaults and other layout rules. */
     height: auto;
     max-width: 80rem;
     width: 100%;
@@ -1076,21 +1079,18 @@ body::-webkit-scrollbar,
     }
 }
 
-/* When a Bootstrap modal is open on small / mobile viewports, ensure the
-   navbar (logo + burger) sits behind the modal and its backdrop so the
-   modal visually overlays the header controls. This only applies on
-   narrower screens where the header would otherwise obstruct the modal. */
-@media (max-width: 991.98px) {
-    body.modal-open .navbar {
-        z-index: 1030 !important; /* below Bootstrap modal (1050) and backdrop (1040) */
-    }
-    body.modal-open .navbar-toggler {
-        z-index: 1030 !important; /* ensure toggler is also behind the modal */
-    }
-    /* also push the custom nav-backdrop behind the modal */
-    body.modal-open .nav-backdrop {
-        z-index: 1025 !important;
-    }
+/* When a Bootstrap modal is open, ensure the navbar (logo + burger)
+   sits behind the modal and its backdrop so the modal visually
+   overlays the header controls on all viewports. */
+body.modal-open .navbar {
+    z-index: 1030 !important; /* below Bootstrap modal (1050) and backdrop (1040) */
+}
+body.modal-open .navbar-toggler {
+    z-index: 1030 !important; /* ensure toggler is also behind the modal */
+}
+/* also push the custom nav-backdrop behind the modal */
+body.modal-open .nav-backdrop {
+    z-index: 1025 !important;
 }
 
 /* Slightly larger portrait when device is in landscape on small screens */
@@ -1102,5 +1102,56 @@ body::-webkit-scrollbar,
 
     .about-image img {
         box-shadow: 0 12px 28px rgba(232, 232, 232, 0.10);
+    }
+}
+
+/* Strong final override: center project modal on tablet portrait devices
+   using fixed positioning to avoid parent layout interference. Specifically
+   targets iPad Mini 6 and similar tablets in portrait mode. */
+@media (min-width: 768px) and (max-width: 991.98px) and (orientation: portrait) {
+    #projectModal.modal {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0 !important;
+        height: 100vh !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+    }
+
+    #projectModal .modal-dialog {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        margin: 0 !important;
+        max-width: 920px !important;
+        width: calc(100% - 48px) !important;
+        height: auto !important;
+    }
+
+    #projectModal .modal-content {
+        padding-top: 28px !important;
+        position: relative !important;
+    }
+}
+
+/* Center project modal on small to medium screens (sm and md breakpoints: 576px to 991px) */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    #projectModal .modal-dialog {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        margin: 0 !important;
+        max-width: 920px !important;
+        width: calc(100% - 48px) !important;
+    }
+
+    #projectModal .modal-content {
+        padding-top: 28px !important;
     }
 }
