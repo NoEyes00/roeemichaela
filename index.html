@@ -258,6 +258,8 @@
         <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl modal-dialog-centered">
                 <div class="modal-content bg-dark text-light">
+                    <!-- Mobile-only close button (visible on small screens) -->
+                    <button type="button" class="project-modal-close btn-close btn-close-white d-md-none" data-bs-dismiss="modal" aria-label="Close"></button>
                     <div class="modal-body">
                         <div id="projectCarousel" class="carousel slide">
                             <div class="carousel-inner">
@@ -670,6 +672,82 @@
 
             // Inline descriptions are hidden by default; the modal will show the description when a card is opened.
         });
+
+            // Swipe-to-close behavior for project modal on touch devices.
+            (function () {
+                const THRESHOLD = 120; // pixels to require before closing
+                let startY = null;
+                let currentY = null;
+                let dragging = false;
+                const projectModalEl = document.getElementById('projectModal');
+                if (!projectModalEl) return;
+
+                const dialog = projectModalEl.querySelector('.modal-dialog');
+                const content = projectModalEl.querySelector('.modal-content');
+                if (!dialog || !content) return;
+
+                function onTouchStart(e) {
+                    if (e.touches && e.touches.length === 1) {
+                        startY = e.touches[0].clientY;
+                        currentY = startY;
+                        dragging = true;
+                        content.style.transition = 'none';
+                    }
+                }
+
+                function onTouchMove(e) {
+                    if (!dragging || !e.touches || e.touches.length !== 1) return;
+                    currentY = e.touches[0].clientY;
+                    const deltaY = Math.max(0, currentY - startY);
+                    // Move the dialog down following the finger for feedback
+                    dialog.style.transform = `translateY(${deltaY}px)`;
+                    // reduce opacity slightly as it moves
+                    const opacity = Math.max(0.5, 1 - deltaY / (THRESHOLD * 3));
+                    dialog.style.opacity = opacity;
+                }
+
+                function onTouchEnd(e) {
+                    if (!dragging) return;
+                    dragging = false;
+                    content.style.transition = '';
+                    const deltaY = Math.max(0, (currentY || startY) - startY);
+                    // If drag exceeded threshold, close modal; otherwise snap back
+                    if (deltaY >= THRESHOLD) {
+                        try {
+                            const modalInstance = bootstrap.Modal.getInstance(projectModalEl) || new bootstrap.Modal(projectModalEl);
+                            modalInstance.hide();
+                        } catch (err) {
+                            projectModalEl.classList.remove('show');
+                        }
+                        // reset styles after a short delay to avoid visual glitches
+                        setTimeout(() => {
+                            dialog.style.transform = '';
+                            dialog.style.opacity = '';
+                        }, 250);
+                    } else {
+                        // snap back
+                        dialog.style.transition = 'transform 200ms ease, opacity 200ms ease';
+                        dialog.style.transform = '';
+                        dialog.style.opacity = '';
+                        setTimeout(() => { dialog.style.transition = ''; }, 210);
+                    }
+                    startY = currentY = null;
+                }
+
+                // Attach touch handlers only when modal shown to avoid interfering with page scroll
+                projectModalEl.addEventListener('show.bs.modal', function () {
+                    dialog.addEventListener('touchstart', onTouchStart, { passive: true });
+                    dialog.addEventListener('touchmove', onTouchMove, { passive: true });
+                    dialog.addEventListener('touchend', onTouchEnd, { passive: true });
+                });
+                projectModalEl.addEventListener('hidden.bs.modal', function () {
+                    dialog.removeEventListener('touchstart', onTouchStart);
+                    dialog.removeEventListener('touchmove', onTouchMove);
+                    dialog.removeEventListener('touchend', onTouchEnd);
+                    dialog.style.transform = '';
+                    dialog.style.opacity = '';
+                });
+            })();
 
         function sendEmail() {
             const subject = encodeURIComponent(document.getElementById('emailSubject').value);
